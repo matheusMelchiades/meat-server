@@ -1,0 +1,47 @@
+{
+  "name": "meat-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "npm run lint && npm run coverage",
+    "lint": "eslint . --ext .js",
+    "coverage": "nyc --reporter=html --reporter=text mocha 'test/**/*.js'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "boom": "^7.3.0",
+    "dotenv": "^6.2.0",
+    "eslint": "^5.12.0",
+    "hapi": "^17.8.1",
+    "hapi-routes": "^5.0.0",
+    "joi": "^14.3.1",
+    "mongodb": "^3.1.10"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0"
+  },
+  "nyc": {
+    "check-coverage": true,
+    "per-file": true,
+    "lines": 0,
+    "statements": 0,
+    "functions": 0,
+    "branches": 0,
+    "include": [
+      "*"
+    ],
+    "exclude": [
+      "test",
+      "config"
+    ],
+    "extensios": [
+      ".js"
+    ],
+    "all": true
+  }
+}
