@@ -28,7 +28,7 @@ const init = async () => {
     });
 
     await server.start();
-    
+
     //eslint-disable-next-line
     console.log(`Server running at: ${server.info.uri}`)
 };

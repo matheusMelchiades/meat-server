@@ -1,6 +1,6 @@
 const assert = require('assert')
-    config = require('../../../config/config')
-    mongo = require('../../../engines/db/db')(config.mongo)
+    config = require('../config/config')
+    mongo = require('../engines/db/db')(config.mongo)
 
 
 
