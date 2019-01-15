@@ -1,8 +1,7 @@
-const mongo = global.connections.meatdb,
+const mongo = global.connection.meatdb,
     collection = 'menus';
 
 module.exports.getMenus = () => {
-
     return new Promise((resolve, reject) => {
 
         mongo.findFull(collection, (err, menus) => {

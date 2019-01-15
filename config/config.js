@@ -13,7 +13,3 @@ module.exports = {
         'password': process.env.MONGO_PASSWORD || '',
     }
 };
-
-global.connections = {
-    meatdb: ''
-};

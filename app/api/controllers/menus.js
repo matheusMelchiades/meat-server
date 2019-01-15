@@ -1,4 +1,4 @@
-const model = require('../models/menu'),
+const model = require('../models/menus'),
     boom = require('boom');
 
 module.exports.getMenus = (request) => {

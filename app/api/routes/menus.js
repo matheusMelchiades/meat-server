@@ -1,4 +1,4 @@
-const handler = require('../controllers/menu');
+const handler = require('../controllers/menus');
 // joi = require('joi');
     
 const routes = [

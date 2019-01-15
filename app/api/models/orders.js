@@ -5,19 +5,17 @@ module.exports.getOrders = () => {
     return new Promise((resolve, reject) => {
 
         return handler.getOrders()
-            .then(orders => {return resolve(orders);})
-            .catch(error => {return reject(error);});
-
+            .then(orders => resolve(orders))
+            .catch(error => reject(error));
     });
 };
 
 module.exports.createOrder = (order) => {
-    
+
     return new Promise((resolve, reject) => {
 
         return handler.createOrder(order)
-            .then(order => {return resolve(order);})
-            .catch(error => {return reject(error);});
-
+            .then(order => resolve(order))
+            .catch(error => reject(error));
     });
 };

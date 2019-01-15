@@ -1,5 +1,7 @@
 const mongo = require('mongodb').MongoClient;
 
+global.connection = {};
+
 function MongoHandler(config) {
     this.config = config;
     this.db = null;
@@ -13,13 +15,14 @@ function urlConnection(cred) {
 MongoHandler.prototype.open = function (cb) {
     const self = this,
         url = urlConnection(this.config);
-
+    
     mongo.connect(url, { useNewUrlParser: true }, (err, connection) => {
         if (err)
             return cb(err);
 
         self.db = connection.db(this.config.db);
         self.connection = connection;
+
         return cb(null, connection);
     });
 };
@@ -29,7 +32,7 @@ MongoHandler.prototype.insertOne = function (collectionName, document, cb) {
 };
  
 MongoHandler.prototype.findFull = function (collection, cb) {
-    return this.db.collection(collection).find({}, {'_id' : 0}).toArray(cb);
+    return this.db.collection(collection).find().toArray(cb);
 };
 
 MongoHandler.prototype.find = function(collection, query, propagation, cb) {
@@ -45,5 +48,8 @@ MongoHandler.prototype.close = function (cb) {
 };
 
 module.exports = function (config) {
-    return new MongoHandler(config);
+    const db = new MongoHandler(config);
+    global.connection[`${config.db}`] = db;
+
+    return db;
 };

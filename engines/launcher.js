@@ -2,8 +2,6 @@ const hapi = require('hapi'),
     config = require('../config/config'),
     mongo = require('./db/db')(config.mongo);
 
-global.connections.meatdb = mongo;
-
 const server = hapi.server({
     'host': config.server.host,
     'port': config.server.port,
@@ -22,10 +20,7 @@ const init = async () => {
         }
     });
 
-    await mongo.open((err, data) => {
-        //eslint-disable-next-line
-        console.log('connect mongo')
-    });
+    await mongo.open((err, data) => 0);
 
     await server.start();
 

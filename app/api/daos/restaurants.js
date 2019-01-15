@@ -1,4 +1,4 @@
-const mongo = global.connections.meatdb,
+const mongo = global.connection.meatdb,
     collection = 'restaurants';
 
 module.exports.getRestaurants = () => {
