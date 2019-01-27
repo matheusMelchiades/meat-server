@@ -39,11 +39,15 @@ MongoHandler.prototype.findFull = function (collection, cb) {
 };
 
 MongoHandler.prototype.find = function(collection, query, propagation, cb) {
-    return this.db.collection(collection).find(query, propagation).toArray(cb);
+    return this.db.collection(collection).find(query).project(propagation).toArray(cb);
 };
 
 MongoHandler.prototype.findOne = function(collection, query, propagation, cb) {
-    return this.db.collection(collection).findOne(query, propagation, cb);
+    return this.db.collection(collection).find(query).project(propagation).toArray((err, data) => {
+        if (err)
+            return cb(err)
+        return cb(null, data[0])
+    });
 };
 
 MongoHandler.prototype.close = function (cb) {
