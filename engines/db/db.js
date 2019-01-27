@@ -9,6 +9,9 @@ function MongoHandler(config) {
 }
 
 function urlConnection(cred) {
+    if (cred.user && cred.password)
+        return `mongodb://${cred.user}:${cred.password}@${cred.host}:${cred.port}/${cred.db}`;
+
     return `mongodb://${cred.host}:${cred.port}`;
 }
 

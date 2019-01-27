@@ -20,7 +20,7 @@ const init = async () => {
         }
     });
 
-    await mongo.open((err, data) => 0);
+    await mongo.open((err, data) => data!=null? console.log('Mongo Connect'):console.log('Error connect mongo'));
 
     await server.start();
 
