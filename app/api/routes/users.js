@@ -4,7 +4,7 @@ const handler = require('../controllers/users'),
 const routes = [
     {
         'method': 'GET',
-        'path': '/teste',
+        'path': '/users',
         'handler': (request, reply) => {
             return handler.getUsers(request);
         }
