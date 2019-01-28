@@ -3,7 +3,7 @@ require('dotenv').config();
 module.exports = {
     'server': {
         'host': process.env.SERVER_HOST || 'localhost',
-        'port': process.env.SERVER_PORT || '3000',
+        'port': process.env.PORT || process.env.SERVER_PORT,
     },
     'mongo': {
         'db': process.env.MONGO_DB || 'meatdb',
