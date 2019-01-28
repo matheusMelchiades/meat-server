@@ -5,7 +5,7 @@ const mongo = global.connection.meatdb,
 module.exports.getUsers = () => {
     return new Promise((resolve, reject) => {
 
-        mongo.findOne(collection, {}, query.getUsersWithoutPassword, (err, users) => {
+        mongo.find(collection, {}, query.getUsersWithoutPassword, (err, users) => {
             if (err)
                 return reject(err);
 

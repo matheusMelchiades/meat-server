@@ -1,4 +1,4 @@
-const handler = require('../daos/users/users.dao')
+const handler = require('../daos/users/users.dao');
 
 module.exports.getUsers = () => {
     

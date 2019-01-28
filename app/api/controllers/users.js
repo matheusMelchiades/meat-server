@@ -1,4 +1,5 @@
-const model = require('../models/users')
+const model = require('../models/users'),
+    boom = require('boom');
 
 module.exports.getUsers = (request) => {
     try {
@@ -15,7 +16,7 @@ module.exports.getUsers = (request) => {
 module.exports.createUser = (request) => {
     try {
 
-        let user = request.payload
+        let user = request.payload;
 
         return model.createUser(user)
             .then(user => 'Usuario Inserido')

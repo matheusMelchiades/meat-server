@@ -35,7 +35,7 @@ const routes = [
         'path': '/users',
         'handler': (request, reply) => {
             // return JSON.stringify(request.payload)
-            return handler.createUser(request)
+            return handler.createUser(request);
         },
         'config': {
             'validate': {
