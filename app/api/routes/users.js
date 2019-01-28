@@ -1,12 +1,12 @@
-const handler = require('../controllers/users')
-    joi = require('joi')
+const handler = require('../controllers/users'),
+    joi = require('joi');
 
 const routes = [
     {
         'method': 'GET',
-        'path': '/users',
+        'path': '/teste',
         'handler': (request, reply) => {
-            return handler.getUsers(request)
+            return handler.getUsers(request);
         }
     },
     {
@@ -18,8 +18,8 @@ const routes = [
                     id: request.query.id,
                     token: request.query.token,
                     users: users
-                })
-            })
+                });
+            });
         },
         'config': {
             'validate': {
