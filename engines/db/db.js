@@ -45,9 +45,13 @@ MongoHandler.prototype.find = function(collection, query, propagation, cb) {
 MongoHandler.prototype.findOne = function(collection, query, propagation, cb) {
     return this.db.collection(collection).find(query).project(propagation).toArray((err, data) => {
         if (err)
-            return cb(err)
-        return cb(null, data[0])
+            return cb(err);
+        return cb(null, data[0]);
     });
+};
+
+MongoHandler.prototype.updateOne = function (collectionName, query, fieldUpdateOperator, options, cb) {
+    return this.db.collection(collectionName).updateOne(query, fieldUpdateOperator, options, cb);
 };
 
 MongoHandler.prototype.close = function (cb) {

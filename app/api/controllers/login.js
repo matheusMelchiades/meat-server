@@ -13,6 +13,6 @@ module.exports.login = (request) => {
             .catch(err => boom.badRequest(err));
 
     } catch (error) {
-        return boom.badRequest(error)
+        return boom.badRequest(error);
     }
 };
