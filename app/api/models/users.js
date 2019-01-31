@@ -1,7 +1,8 @@
-const handler = require('../daos/users/users.dao');
+const handler = require('../daos/users/users.dao'),
+    crypt = require('../../../helper/crypt');
 
 module.exports.getUsers = () => {
-    
+
     return new Promise((resolve, reject) => {
 
         return handler.getUsers()
@@ -13,8 +14,19 @@ module.exports.getUsers = () => {
 module.exports.createUser = (user) => {
     return new Promise((resolve, reject) => {
 
-        return handler.createUser(user)
-            .then(user => resolve(user))
-            .then(error => reject(error));
+        if (user.password != user.passwordConfirm)
+            return reject('Password not equals');
+
+        delete user.passwordConfirm;
+
+        crypt.encrypt(user.password).then(hash => {
+            
+            user.password = hash;
+            
+            return handler.createUser(user)
+                .then(user => resolve(user))
+                .then(error => reject(error));
+        });
     });
 };
+

@@ -3,7 +3,7 @@ const saltRounds = 10;
 
 senha = 'teste'
 
-async function init(plainPassword) {
+module.exports.init = async function init(plainPassword) {
     let salt = await bcrypt.genSalt(saltRounds);
 
     let hashPassword = await bcrypt.hash(plainPassword, salt);
@@ -13,7 +13,6 @@ async function init(plainPassword) {
     return hashPassword;
 }
 
+check = bcrypt.compare('teste123', '$2b$10$O6e9.hxX1ongy05gfMoaa.PTykwNJz9UE0PudvCKKpLLIe20meHky')
 
-init(senha).then(x => {
-    bcrypt.compare(senha, x).then(result => console.log(result))
-});
+check.then(result => console.log(result))

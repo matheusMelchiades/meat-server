@@ -17,7 +17,7 @@ module.exports.createUser = (request) => {
     try {
 
         let user = request.payload;
-
+        
         return model.createUser(user)
             .then(user => 'Usuario Inserido')
             .catch(error => boom.badRequest(error));

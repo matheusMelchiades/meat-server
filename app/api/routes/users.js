@@ -45,6 +45,9 @@ const routes = [
                     'password': joi.string().required(),
                     'passwordConfirm': joi.string().required()
                 }
+            },
+            'plugins' : {
+                'policies': ['validatePassword']
             }
         }
     }
